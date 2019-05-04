@@ -1,0 +1,16 @@
+version: '2'
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - common_network
+networks:
+  common_network:
+    external: true
+
+# grafana web界面密码 admin:admin
+

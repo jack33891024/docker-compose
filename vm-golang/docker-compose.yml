@@ -1,0 +1,23 @@
+version: '2'
+services:
+  vm:
+    image: centos:vm-golang
+    hostname: centos-ssh.demo
+    container_name: vm_golang_demo
+    restart: always
+    ports:
+      - "10022:22"
+    networks:
+      - common_network
+
+networks:
+  common_network:
+    external: true  # 引用外部网络
+
+
+
+
+
+# docker network create -d bridge --attachable --subnet 192.168.250.0/24 --gateway 192.168.250.254 common_network
+    
+    

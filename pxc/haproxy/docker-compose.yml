@@ -1,0 +1,16 @@
+version: '2'
+services:
+  pxc-lb:
+    image: haproxy
+    container_name: pxc-haproxy
+    restart: always
+    ports:
+      - 8888:8888
+      - 63306:3306
+    volumes:
+      - ./conf/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    networks:
+      - common_network
+networks:
+  common_network:
+    external: true

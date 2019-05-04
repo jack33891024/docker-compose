@@ -1,0 +1,105 @@
+version: '2'
+services:
+  node1:
+    image: pxc
+    container_name: node1
+    restart: always
+    ports:
+      - 13306:3306
+    volumes:
+      - node1:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      XTRABACKUP_PASSWORD: "123456"
+      CLUSTER_NAME: "pxc_demo"
+    networks:
+      - common_network
+  node2:
+    image: pxc
+    container_name: node2
+    restart: always
+    ports:
+      - 23306:3306
+    volumes:
+      - node2:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      XTRABACKUP_PASSWORD: "123456"
+      CLUSTER_NAME: "pxc_demo"
+      CLUSTER_JOIN: "node1"
+    networks:
+      - common_network
+    depends_on:
+      - node1
+  node3:
+    image: pxc
+    container_name: node3
+    restart: always
+    ports:
+      - 33306:3306
+    volumes:
+      - node3:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      XTRABACKUP_PASSWORD: "123456"
+      CLUSTER_NAME: "pxc_demo"
+      CLUSTER_JOIN: "node1"
+    networks:
+      - common_network
+    depends_on:
+      - node1
+  node4:
+    image: pxc
+    container_name: node4
+    restart: always
+    ports:
+      - 43306:3306
+    volumes:
+      - node4:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      XTRABACKUP_PASSWORD: "123456"
+      CLUSTER_NAME: "pxc_demo"
+      CLUSTER_JOIN: "node1"
+    networks:
+      - common_network
+    depends_on:
+      - node1
+  node5:
+    image: pxc
+    container_name: node5
+    restart: always
+    ports:
+      - 53306:3306
+    volumes:
+      - node5:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      XTRABACKUP_PASSWORD: "123456"
+      CLUSTER_NAME: "pxc_demo"
+      CLUSTER_JOIN: "node1"
+    networks:
+      - common_network
+    depends_on:
+      - node1
+
+volumes:
+  node1:
+  node2:
+  node3:
+  node4:
+  node5:
+
+networks:
+  common_network:   
+    external: true
+
+# create a custom network with default driver
+  # name `common_network`
+
+# get pxc images
+  # docker pull percona/percona-xtradb-cluster
+  # docker tag percona/percona-xtradb-cluster pxc
+
+# create table without primary key write data will retrun errors
+    

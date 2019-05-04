@@ -1,0 +1,22 @@
+version: '2'
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    volumes:
+      - ./db:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=mydb
+      - INFLUXDB_HTTP_AUTH_ENABLED=true #启用用户认证
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=adminpass
+      - INFLUXDB_USER=user
+      - INFLUXDB_USER_PASSWORD=pass
+    networks:
+      - common_network
+networks:
+  common_network:
+    external: true

@@ -1,0 +1,15 @@
+version: '2'
+services:
+  nginx:
+    image: nginx
+    container_name: front-nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./Shanghai:/etc/localtime
+    networks:
+      - common_network
+networks:
+  common_network:
+    external: true
