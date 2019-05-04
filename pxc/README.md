@@ -1,4 +1,10 @@
-# 文件分布
+## 文件分布
 
 > * ./docker-compose.yml: pxc集群启动
->  * haproxy: pxc集群负载均衡haproxy相关配置
+> * haproxy: pxc集群负载均衡haproxy相关配置
+
+## haproxy check mysql
+
+```
+create user 'haproxy'@'%' identified by '';
+```
