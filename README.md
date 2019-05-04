@@ -1,6 +1,7 @@
 # docker-compose
 
-> * compose of docker service: example
+## compose file example:
+
  - nginx
  - mysql
  - redis
