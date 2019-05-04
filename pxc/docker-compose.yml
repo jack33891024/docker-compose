@@ -94,9 +94,6 @@ networks:
   common_network:   
     external: true
 
-# create a custom network with default driver
-  # name `common_network`
-
 # get pxc images
   # docker pull percona/percona-xtradb-cluster
   # docker tag percona/percona-xtradb-cluster pxc
