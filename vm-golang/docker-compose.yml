@@ -1,7 +1,7 @@
 version: '2'
 services:
   vm:
-    image: centos:vm-golang
+    image: centos:vm-golang-sv
     hostname: centos-ssh.demo
     container_name: vm_golang_demo
     restart: always
@@ -12,6 +12,4 @@ services:
 
 networks:
   common_network:
-    external: true  # 引用外部网络
-    
-    
+    external: true  # 引用外部网络    
