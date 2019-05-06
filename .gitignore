@@ -1,2 +1,2 @@
-influxdb/db/
-mysql/data/
+/influxdb/db/
+/mysql/data/
