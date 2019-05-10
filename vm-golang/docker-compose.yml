@@ -4,6 +4,7 @@ services:
     image: centos:vm-golang-sv
     hostname: centos-ssh.demo
     container_name: vm_golang_demo
+    privileged: true
     restart: always
     ports:
       - "10022:22"
