@@ -1,0 +1,25 @@
+version: '3.6'
+services:
+  gitlab-ce:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: always
+    ports:
+      - 58080:80
+      - 58443:443
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # external_url 'http://192.168.0.20:58080'
+    volumes:
+      - gitlab-conf:/etc/gitlab:Z
+      - gitlab-log:/var/log/gitlab:Z
+      - gitlab-data:/var/opt/gitlab:Z
+    networks:
+      - common_network
+volumes:
+  gitlab-conf:
+  gitlab-log:
+  gitlab-data:
+networks:
+  common_network:
+    external: true
