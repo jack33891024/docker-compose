@@ -11,6 +11,7 @@
  - nsq
  - grafana
  - influxdb
+ - gitlab-ce
 
  ## create netowrk named common_network with default driver(bridge)
 
