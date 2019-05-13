@@ -1,4 +1,2 @@
 /influxdb/db/*
 /mysql/data/
-# /gitlab/log/
-# /gitlab/data/
