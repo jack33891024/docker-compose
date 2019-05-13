@@ -8,10 +8,10 @@ services:
       - 58080:80
       - 58443:443
     environment:
-      GITLAB_OMNIBUS_CONFIG: |
+      GITLAB_OMNIBUS_CONFIG: |      # 建议使用linux环境,使用bind挂载gitlab.rb
         # external_url 'http://192.168.0.20:58080'
     volumes:
-      - gitlab-conf:/etc/gitlab:Z
+      - gitlab-conf:/etc/gitlab:Z   # windows 10环境,使用卷避免文件系统权限问题
       - gitlab-log:/var/log/gitlab:Z
       - gitlab-data:/var/opt/gitlab:Z
     networks:
