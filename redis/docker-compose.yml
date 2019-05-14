@@ -1,19 +1,51 @@
 version: '2'
 services:
-  redis:
+  master:
     image: redis:latest
-    container_name: golang-redis
+    container_name: redis-master
     restart: always
     ports:
       - 0.0.0.0:6379:6379
     volumes:
-      - ./data:/data
-      - ./conf/redis.conf:/data/redis.conf
+      - master:/data
+      - ./conf/redis-master.conf:/user/local/etc/redis.conf
     entrypoint:
       - redis-server
-      - /data/redis.conf
+      - /user/local/etc/redis.conf
     networks:
       - common_network
+  slave1:
+    image: redis:latest
+    container_name: redis-slave1
+    restart: always
+    ports:
+      - 0.0.0.0:6380:6379
+    volumes:
+      - slave1:/data
+      - ./conf/redis-slave1.conf:/usr/local/etc/redis.conf
+    entrypoint:
+      - redis-server
+      - /usr/local/etc/redis.conf
+    networks:
+      - common_network
+  slave2:
+    image: redis:latest
+    container_name: redis-slave2
+    restart: always
+    ports:
+      - 0.0.0.0:6381:6379
+    volumes:
+      - slave2:/data
+      - ./conf/redis-slave2.conf:/usr/local/etc/redis.conf
+    entrypoint:
+      - redis-server
+      - /usr/local/etc/redis.conf
+    networks:
+      - common_network
+volumes:
+  master:
+  slave1:
+  slave2:
 networks:
   common_network:
     external: true
