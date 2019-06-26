@@ -8,10 +8,10 @@ services:
       - 0.0.0.0:6379:6379
     volumes:
       - master:/data
-      - ./conf/redis-master.conf:/user/local/etc/redis.conf
+      - ./conf/redis-master.conf:/usr/local/etc/redis.conf
     entrypoint:
       - redis-server
-      - /user/local/etc/redis.conf
+      - /usr/local/etc/redis.conf
     networks:
       - common_network
   slave1:
